@@ -1,0 +1,26 @@
+{
+  "name": "async_nodejs_exercises",
+  "version": "0.0.1",
+  "description": "Async Tasks 2024",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Melanjnk/async_nodejs_exercises.git"
+  },
+  "keywords": [
+    "nodejs",
+    "async"
+  ],
+  "author": "Andrii Chihlintsev <andrii.chihlintsev@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Melanjnk/async_nodejs_exercises/issues"
+  },
+  "homepage": "https://github.com/Melanjnk/async_nodejs_exercises#readme",
+  "devDependencies": {
+    "prettier": "^3.2.5"
+  }
+}
