@@ -1,5 +1,7 @@
 'use strict'
 
+// Подскажите пожалуйста, нужно ли добиваться чтобы output был 1в1 как в поставленной задаче?
+
 // Task: rewrite `total` function to be async with JavaScript timers
 // Use `setInterval` and `clearInterval` to check next item each 1 second
 // Calculations will be executed asynchronously because of timers
@@ -18,15 +20,24 @@
 
 const total = (items, callback) => {
   let result = 0
-  for (const item of items) {
+  let index = 0
+
+  let interval = setInterval(() => {
+    const item = items[index]
     console.log({ check: { item } })
     if (item.price < 0) {
+      clearInterval(interval)
+      interval = null
       callback(new Error('Negative price is not allowed'))
-      return
     }
     result += item.price
-  }
-  callback(null, result)
+    index++
+    if (index === items.length) {
+      clearInterval(interval)
+      interval = null
+      callback(null, result)
+    }
+  }, 1000)
 }
 
 const electronics = [
