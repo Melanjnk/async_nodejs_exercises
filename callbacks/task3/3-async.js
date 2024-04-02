@@ -23,20 +23,22 @@ const total = (items, callback) => {
   let index = 0
 
   let interval = setInterval(() => {
+    if (index === items.length) {
+      clearInterval(interval)
+      interval = null
+      callback(null, result)
+      return
+    }
     const item = items[index]
     console.log({ check: { item } })
     if (item.price < 0) {
       clearInterval(interval)
       interval = null
       callback(new Error('Negative price is not allowed'))
+      return
     }
     result += item.price
     index++
-    if (index === items.length) {
-      clearInterval(interval)
-      interval = null
-      callback(null, result)
-    }
   }, 1000)
 }
 
