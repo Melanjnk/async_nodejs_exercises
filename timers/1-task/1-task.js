@@ -3,12 +3,18 @@
 // Task: rewrite this synchronous code to asynchronous
 // Promise-returning function with `setTimeout`
 
-const sleep = (msec) => {
-  const end = new Date().getTime() + msec;
-  while (new Date().getTime() < end);
-};
+const sleepAsync = (msec) =>
+  new Promise((cb) => {
+    setTimeout(() => {
+      console.log('prepare cb');
+      cb();
+      console.log('after cb');
+    }, msec);
+  });
 
 console.log({ start: new Date().toISOString() });
 console.log('Wait 3 sec...');
-sleep(3000);
-console.log({ finish: new Date().toISOString() });
+const DELAY = 3000;
+sleepAsync(DELAY).then(() => {
+  console.log({ finish: new Date().toISOString() });
+});
