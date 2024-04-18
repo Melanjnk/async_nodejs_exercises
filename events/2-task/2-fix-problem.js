@@ -40,6 +40,10 @@ purchase.on('add', (item) => {
   console.log({ item, wallet });
 });
 
+purchase.on('buy', (item) => {
+  console.log(`You have bought: ${item}`);
+});
+
 // @see Achieve by handle error: prevent termination on error
 purchase.on('error', (e) => {
   console.log(`Error msg: ${e}`);
