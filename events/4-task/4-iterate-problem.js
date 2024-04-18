@@ -14,9 +14,24 @@ const electronics = [
 ];
 
 const iterator = on(purchase, 'add');
-console.log({ iterator });
+
+// @todo Ask Timur
+// AsyncIterator to iterate over items emitted into purchase
+const asyncIterator = iterator[Symbol.asyncIterator]();
+
+const consumeItems = async () => {
+  while (true) {
+    // const { value, done } = await iterator.next();
+    const { value, done } = await asyncIterator.next();
+    if (done) {
+      break;
+    }
+    console.dir(value);
+  }
+};
+
+consumeItems();
 
 for (const item of electronics) {
   purchase.emit('add', item);
 }
-
