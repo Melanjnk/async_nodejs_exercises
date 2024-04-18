@@ -35,6 +35,11 @@ purchase.on('add', (item) => {
   console.log({ item, wallet });
 });
 
+// @see Achieve by handle error: prevent termination on error
+purchase.on('error', (e) => {
+  console.log(`Error msg: ${e}`);
+});
+
 const electronics = [
   { name: 'Laptop', price: 1500 },
   { name: 'Keyboard', price: 100 },
