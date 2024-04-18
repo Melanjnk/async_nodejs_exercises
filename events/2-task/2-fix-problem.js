@@ -31,6 +31,11 @@ console.log({ wallet });
 const purchase = new Purchase({ limit: wallet.money });
 
 purchase.on('add', (item) => {
+  if (wallet.money - item.price < 0) {
+    purchase.emit('error', new Error('Insufficient funds'));
+    return;
+    // return new Error('insufficient funds');
+  }
   wallet.money -= item.price;
   console.log({ item, wallet });
 });
