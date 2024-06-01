@@ -13,8 +13,9 @@ const electronics = [
 
 (async () => {
   const iter = setInterval(1000, electronics);
-  for await (const items of iter) {
-    const item = items.shift();
-    console.log({ item });
+  let index = -1;
+  while (++index < electronics.length) {
+    console.log(electronics[index]);
+    console.log({ iter });
   }
 })();
